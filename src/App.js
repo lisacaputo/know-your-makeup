@@ -5,14 +5,17 @@ import axios from 'axios'
 import './styles/App.css'
 
 const App = () => {
+  const [brands, setBrands] = useState([])
+
   useEffect(()=>{
     //this will happen right when the component loads
     const getBrands = async () => {
-      //const brand = 
+      
       //endpoint
       const response = await axios.get(`${BASE_URL}`)
       //console.log(response);
-      console.log(response.data);
+      //console.log(response.data);
+      const brands = response.data
     }
     getBrands()
   }, [])
@@ -20,7 +23,13 @@ const App = () => {
 
   return (
     <div>
-
+      {brands.map((brand) => (
+        <BrandList 
+          key={brand.id}
+          brandName={brand.brandName}
+          itemName={brand.itemName}
+        />
+      ))}
     </div>
   )
 }
