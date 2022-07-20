@@ -15,6 +15,7 @@ const App = () => {
       const response = await axios.get(`${BASE_URL}`)
       //console.log(response);
       //console.log(response.data);
+      //console.log(response.data[0].brand);
       const brands = response.data
       setBrands(brands)
     }
@@ -27,8 +28,9 @@ const App = () => {
       {brands.map((brand) => (
         <BrandList 
           key={brand.id}
-          brandName={brand.brandName}
-          itemName={brand.itemName}
+          //key is the left side, and right side is value getting pulled from the component pulling props i.e. arrays
+          brandName={brand.brand}
+          itemName={brand.name}
         />
       ))}
     </div>
