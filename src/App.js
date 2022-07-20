@@ -16,6 +16,7 @@ const App = () => {
       //console.log(response);
       //console.log(response.data);
       const brands = response.data
+      setBrands(brands)
     }
     getBrands()
   }, [])
