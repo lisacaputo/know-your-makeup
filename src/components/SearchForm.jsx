@@ -1,16 +1,16 @@
 
 
-const SearchForm = () => {
+const SearchForm = (props) => {
 
     return (
         <div id="searchForm">
             <p>Enter the full artist name</p>
-            <input 
+            <input
                 type='text'
-                value={artist}
-                onChange={(event) => setArtist(event.target.value)}
+                value={props.artist}
+                onChange={(event) => props.setArtist(event.target.value)}
             />
-            <button onClick={handleClick}>Search</button>
+            <button onClick={props.handleClick}>Search</button>
         </div>
 
     )

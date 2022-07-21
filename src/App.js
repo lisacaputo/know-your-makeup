@@ -40,7 +40,11 @@ const App = () => {
 
   return (
     <div>
-      <SearchForm />
+      <SearchForm
+        artist={artist}
+        setArtist={setArtist}
+        handleClick={handleClick}
+      />
     </div>
   )
 }
