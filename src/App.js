@@ -36,29 +36,28 @@ const App = () => {
       console.log(response);
       
       //Reset Artist input field
-      // setArtist('')
+      setArtist('')
   }
 
-  // useEffect(() => {
-  //   const getSongs = async () => {
-  //     const options = {
-  //       method: 'GET',
-  //       headers: {
-  //         'X-RapidAPI-Key': '6a96ef12e3mshbaf4615790c6073p140476jsn118ebe42f2ca',
-  //         'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
-  //       }
-  //     }
+  useEffect(() => {
+    const getSongs = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': `${apiKey}`,
+          'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
+        }
+      }
 
 
-  //     const response = await axios.get(lyricsUrl,options)
-  //     console.log(lyricsUrl);
-  //     //setSongId(response.data.response.hits.results.api_path)
-  //   }
-  //   getSongs()
-  // }, [])
+      const response = await axios.get(lyricsUrl,options)
+      console.log(lyricsUrl);
+      setSongId(response.data.response.hits.results.api_path)
+      console.log(songId)
+    }
+    getSongs()
+  }, [])
 
-// Search form component with input and button
-// SongList.jsx - here song list
 // SongDetail - api_path to pull song lyric .... map((SONG) => {api_path})
 
   return (
@@ -69,6 +68,7 @@ const App = () => {
         handleClick={handleClick}
       />
       <div className='songGrid'>
+        {/* Below you need && to make sure the page doesn't get rid of the API results until it's able to pull them for the below */}
         {songList && songList.map((song) => (
           <Song 
             key={song.result.api_path}
