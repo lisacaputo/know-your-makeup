@@ -1,15 +1,16 @@
 const BrandList = (props) => {
 
     return (
-        <ul className="brand-list">
-            <li>Brand: {props.brandName}</li>
-            <li>Item Name: {props.itemName}</li>
-        </ul>
-
-        
+        <div>
+            {props.brands && props.brands.map((brand) => (
+                <ul key={brand.id} className="brand-list">
+                    <li>Brand: {brand.brand}</li>
+                    <li>Item Name: {brand.name}</li>
+                </ul> 
+            ))}
+        </div>
+    
     )
-
-
 }
 
 export default BrandList
