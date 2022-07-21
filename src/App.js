@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BASE_URL } from './global'
-import BrandList from './components/BrandList'
+import SearchForm from './components/SearchForm'
 import SongList from './components/SongList'
 import axios from 'axios'
 import './styles/App.css'
@@ -40,13 +40,7 @@ const App = () => {
 
   return (
     <div>
-      <p>Enter the full artist name</p>
-      <input 
-        type='text'
-        value={artist}
-        onChange={(event) => setArtist(event.target.value)}
-       />
-      <button onClick={handleClick}>Search</button>
+      <SearchForm />
     </div>
   )
 }
