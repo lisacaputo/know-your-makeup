@@ -5,6 +5,7 @@ const Song = (props) => {
             <img src={props.song.song_art_image_thumbnail_url} alt="song artwork" />
             <h2>Song Title: {props.song.title_with_featured}</h2>
             <span>{props.song.release_date_for_display}</span>
+            <button onClick={() => props.getLyrics(props.songId)}>Get Lyrics</button>
         </div>
 
     )

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { BASE_URL } from './global'
 import SearchForm from './components/SearchForm'
 import Song from './components/Song'
@@ -9,12 +9,11 @@ const App = () => {
   
   //URL to search for Artist
   const [artist,setArtist] = useState('')
-  const [songId,setSongId] = useState('')
   const [songList,setSongList] = useState('')
-  const [selectedSong, setSelectedSong] = useState(null)
+  const [lyrics, setLyrics] = useState(null)
 
   const artistUrl = `${BASE_URL}/search`
-  const lyricsUrl = `${BASE_URL}${songId}/lyrics`
+  
   //Note to self: .env files always needs to exist at the root folder
   const apiKey = process.env.REACT_APP_API_KEY
 
@@ -29,37 +28,30 @@ const App = () => {
         }
       }
 
-      //API Call
+      //API Call for Song List based on Artist Entry
       const response = await axios.get(artistUrl, options)
       setSongList(response.data.response.hits)
-      console.log(response.data.response.hits);
-      console.log(response);
+      // console.log(response.data.response.hits);
+      // console.log(response);
       
       //Reset Artist input field
       setArtist('')
   }
 
-  useEffect(() => {
-    const getSongs = async () => {
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': `${apiKey}`,
-          'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
-        }
+  const getLyrics = async (songId) => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': `${apiKey}`,
+        'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
       }
-
-
-      const response = await axios.get(lyricsUrl,options)
-      console.log(lyricsUrl);
-      setSongId(response.data.response.hits.results.api_path)
-      console.log(songId)
     }
-    getSongs()
-  }, [])
+    const lyricsUrl = `${BASE_URL}${songId}/lyrics`
 
-// SongDetail - api_path to pull song lyric .... map((SONG) => {api_path})
-
+    const response = await axios.get(lyricsUrl,options)
+    setLyrics(response.data.response.lyrics.lyrics.body.plain);
+  }
+  
   return (
     <div>
       <SearchForm
@@ -73,6 +65,8 @@ const App = () => {
           <Song 
             key={song.result.api_path}
             song={song.result}
+            songId={song.result.api_path}
+            getLyrics={getLyrics}
           />
         ))}
       </div>
