@@ -47,12 +47,12 @@ const App = () => {
         handleClick={handleClick}
       />
       <div className='resultsGrid'>
-        {/* {songList.map((song) => (
+        {songList.map((song) => (
           <Song 
             key={song.result.api_path}
             song={song.result}
           />
-        ))} */}
+        ))}
       </div>
     </div>
   )
