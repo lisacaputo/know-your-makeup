@@ -18,12 +18,12 @@ const App = () => {
 
 
   const handleClick = async () => {    
-    //API Data with Julio's Key, get me 20 songs by the artist in the search
+    //Get me 20 songs by the artist in the search
       const options = {
         method: 'GET',
         params: {q: artist, per_page: '20', page: '1'},
         headers: {
-          'X-RapidAPI-Key': `260293e4e7msh690594d6d5fe4c3p10f341jsn1f540203c689`,
+          'X-RapidAPI-Key': `6a96ef12e3mshbaf4615790c6073p140476jsn118ebe42f2ca`,
           'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
         }
       }
@@ -32,7 +32,10 @@ const App = () => {
       const response = await axios.get(artistUrl, options)
       setSongList(response.data.response.hits)
       console.log(response.data.response.hits);
-      console.log(response);  
+      console.log(response);
+      
+      //Reset Artist input field
+      setArtist('')
   }
 
 // Search form component with input and button
@@ -46,7 +49,7 @@ const App = () => {
         setArtist={setArtist}
         handleClick={handleClick}
       />
-      <div className='resultsGrid'>
+      <div className='songGrid'>
         {songList.map((song) => (
           <Song 
             key={song.result.api_path}

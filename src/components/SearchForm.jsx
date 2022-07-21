@@ -1,5 +1,3 @@
-
-
 const SearchForm = (props) => {
 
     return (
