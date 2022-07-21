@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BASE_URL } from './global'
 import SearchForm from './components/SearchForm'
-import SongList from './components/SongList'
+import Song from './components/Song'
 import axios from 'axios'
 import './styles/App.css'
 
@@ -22,7 +22,7 @@ const App = () => {
         method: 'GET',
         params: {q: artist, per_page: '20', page: '1'},
         headers: {
-          'X-RapidAPI-Key': '260293e4e7msh690594d6d5fe4c3p10f341jsn1f540203c689',
+          'X-RapidAPI-Key': `${process.env.REACT_APP_RAPIDAPI_KEY}`,
           'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
         }
       }
@@ -45,6 +45,14 @@ const App = () => {
         setArtist={setArtist}
         handleClick={handleClick}
       />
+      {/* <div className='resultsGrid'>
+        {songList.map((song) => (
+          <Song 
+            key={song.result.id}
+            song={song.result}
+          />
+        ))}
+      </div> */}
     </div>
   )
 }

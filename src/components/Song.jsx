@@ -1,4 +1,4 @@
-const SongList = (props) => {
+const Song = (props) => {
 
     return (
         <div>
@@ -8,4 +8,4 @@ const SongList = (props) => {
     )
 }
 
-export default SongList
+export default Song
