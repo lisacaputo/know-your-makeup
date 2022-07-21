@@ -14,6 +14,7 @@ const App = () => {
 
   const artistUrl = `${BASE_URL}/search`
   const lyricsUrl = `${BASE_URL}/songs/${songId}/lyrics`
+  //const apiKey = process.env.REACT_APP_RAPIDAPI_KEY
 
 
   const handleClick = async () => {    
@@ -22,7 +23,7 @@ const App = () => {
         method: 'GET',
         params: {q: artist, per_page: '20', page: '1'},
         headers: {
-          'X-RapidAPI-Key': `${process.env.REACT_APP_RAPIDAPI_KEY}`,
+          'X-RapidAPI-Key': `260293e4e7msh690594d6d5fe4c3p10f341jsn1f540203c689`,
           'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
         }
       }
@@ -45,14 +46,14 @@ const App = () => {
         setArtist={setArtist}
         handleClick={handleClick}
       />
-      {/* <div className='resultsGrid'>
-        {songList.map((song) => (
+      <div className='resultsGrid'>
+        {/* {songList.map((song) => (
           <Song 
-            key={song.result.id}
+            key={song.result.api_path}
             song={song.result}
           />
-        ))}
-      </div> */}
+        ))} */}
+      </div>
     </div>
   )
 }
