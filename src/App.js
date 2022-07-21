@@ -11,11 +11,11 @@ const App = () => {
   const [artist,setArtist] = useState('')
   const [songId,setSongId] = useState('')
   const [songList,setSongList] = useState('')
+  const [selectedSong, setSelectedSong] = useState(null)
 
   const artistUrl = `${BASE_URL}/search`
-  const lyricsUrl = `${BASE_URL}/songs/${songId}/lyrics`
+  const lyricsUrl = `${BASE_URL}${songId}/lyrics`
   //const apiKey = process.env.REACT_APP_RAPIDAPI_KEY
-
 
   const handleClick = async () => {    
     //Get me 20 songs by the artist in the search
@@ -23,7 +23,7 @@ const App = () => {
         method: 'GET',
         params: {q: artist, per_page: '20', page: '1'},
         headers: {
-          'X-RapidAPI-Key': `6a96ef12e3mshbaf4615790c6073p140476jsn118ebe42f2ca`,
+          'X-RapidAPI-Key': '6a96ef12e3mshbaf4615790c6073p140476jsn118ebe42f2ca',
           'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
         }
       }
@@ -35,8 +35,26 @@ const App = () => {
       console.log(response);
       
       //Reset Artist input field
-      setArtist('')
+      // setArtist('')
   }
+
+  // useEffect(() => {
+  //   const getSongs = async () => {
+  //     const options = {
+  //       method: 'GET',
+  //       headers: {
+  //         'X-RapidAPI-Key': '6a96ef12e3mshbaf4615790c6073p140476jsn118ebe42f2ca',
+  //         'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
+  //       }
+  //     }
+
+
+  //     const response = await axios.get(lyricsUrl,options)
+  //     console.log(lyricsUrl);
+  //     //setSongId(response.data.response.hits.results.api_path)
+  //   }
+  //   getSongs()
+  // }, [])
 
 // Search form component with input and button
 // SongList.jsx - here song list
@@ -49,14 +67,14 @@ const App = () => {
         setArtist={setArtist}
         handleClick={handleClick}
       />
-      <div className='songGrid'>
+      {/* <div className='songGrid'>
         {songList.map((song) => (
           <Song 
             key={song.result.api_path}
             song={song.result}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }
