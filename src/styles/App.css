@@ -3,6 +3,7 @@ h1 {
   font-family: 'Mochiy Pop One', sans-serif;
   font-size: 2em;
   font-weight: 500;
+  line-height: 1.3em;
 }
 
 h2 {
@@ -60,7 +61,7 @@ button {
 }
 
 .songCard {
-  background: rgb(237,237,237);
+  background: rgb(237, 237, 237);
   border-radius: 15px;
   padding: 2rem;
   width: 350px;
