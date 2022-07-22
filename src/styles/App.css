@@ -52,6 +52,10 @@ button {
   width: 250px;
 }
 
+.lyricContainer {
+  padding: 2rem;
+}
+
 /* Grid Styles */
 .songGrid {
   display: flex;
