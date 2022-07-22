@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BASE_URL } from './global'
 import SearchForm from './components/SearchForm'
 import Song from './components/Song'
+import Lyrics from './components/Lyrics'
 import axios from 'axios'
 import './styles/App.css'
 
@@ -53,7 +54,7 @@ const App = () => {
   }
   
   return (
-    <div>
+    <>
       <SearchForm
         artist={artist}
         setArtist={setArtist}
@@ -70,7 +71,10 @@ const App = () => {
           />
         ))}
       </div>
-    </div>
+      <Lyrics 
+        lyrics={lyrics}
+      />
+    </>
   )
 }
 

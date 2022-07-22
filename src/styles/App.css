@@ -1,3 +1,9 @@
+/* General Styles */
+#searchForm {
+  background: rgb(255, 255, 100);
+  padding: 2rem;
+}
+
 /* Grid Styles */
 .songGrid {
   display: flex;
