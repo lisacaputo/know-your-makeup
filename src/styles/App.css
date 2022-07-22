@@ -1,13 +1,67 @@
 /* General Styles */
+h1 {
+  font-family: 'Mochiy Pop One', sans-serif;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0;
+}
+
 #searchForm {
   background: rgb(255, 255, 100);
-  padding: 2rem;
+  padding: 1rem 1rem 2rem;
+}
+
+input {
+  border-radius: 12px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  padding: 1.2rem;
+}
+
+button {
+  background-color: rgb(0, 0, 0);
+  border-radius: 12px;
+  border-width: 0;
+  color: white;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: .8em;
+  margin-left: 1rem;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+.songCard span {
+  display: block;
+}
+
+.songCard button {
+  margin-left: 0;
+  margin-top: .5rem;
+}
+
+.songCard img {
+  border-radius: 40px;
+  max-width: 100%;
+  width: 250px;
 }
 
 /* Grid Styles */
 .songGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10rem 20rem;
+  gap: 2rem 1rem;
+  justify-content: space-evenly;
+  padding: 3rem 2rem;
+}
+
+.songCard {
+  background: rgb(237,237,237);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 350px;
 }
